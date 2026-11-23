@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define tamano 5
+
+void cargarVector(int vector[], int tamaño);
+void consultarDatos(int vector[], int tamaño);
+
+int main(void)
+{
+    int vector[tamano];
+
+    cargarVector(vector, tamano);
+    consultarDatos(vector, tamano);
+
+    printf("\nPrograma finalizado.\n");
+
+    return 0;
+}
+
+void cargarVector(int vector[], int tamaño)
+{
+    int i;
+
+    printf("Ingrese %d datos para el vector:\n", tamaño);
+
+    for (i = 0; i < tamaño; i++)
+    {
+        printf("Dato de la posicion %d: ", i);
+        scanf("%d", &vector[i]);
+    }
+}
+
+void consultarDatos(int vector[], int tamaño)
+{
+    int posicion;
+    int continuar = 1;
+
+    while (continuar == 1)
+    {
+        printf("\nIngrese la posicion que desea consultar (0 a %d): ",
+               tamano - 1);
+        scanf("%d", &posicion);
+
+        if (posicion >= 0 && posicion < tamaño)
+        {
+            printf("El dato de la posicion %d es: %d\n",
+                   posicion, vector[posicion]);
+        }
+        else
+        {
+            printf("Error: la posicion ingresada no existe.\n");
+        }
+
+        printf("\nDesea consultar otro dato?\n");
+        printf("Ingrese Continuar o Finalizar: ");
+        
+        char palabra1[20];
+           scanf("%19s", palabra1);
+        if(strcmp(palabra1, "Continuar") == 0)
+{
+    continuar = 1;
+}
+else if(strcmp(palabra1, "Finalizar") == 0)
+{
+    continuar = 0;
+}
+else
+{
+    printf("\nPalabra incorrecta. Intente nuevamente.\n");
+}
+        ;
+    }
+}
